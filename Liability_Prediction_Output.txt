@@ -1,0 +1,625 @@
+Conda uses environments to load different sets of Python packages
+type conda env list to see the environments availible.
+23/05/04 19:39:00 INFO SparkContext: Running Spark version 3.3.1
+23/05/04 19:39:00 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+23/05/04 19:39:00 WARN SparkConf: Note that spark.local.dir will be overridden by the value set by the cluster manager (via SPARK_LOCAL_DIRS in mesos/standalone/kubernetes and LOCAL_DIRS in YARN).
+23/05/04 19:39:00 INFO ResourceUtils: ==============================================================
+23/05/04 19:39:00 INFO ResourceUtils: No custom resources configured for spark.driver.
+23/05/04 19:39:00 INFO ResourceUtils: ==============================================================
+23/05/04 19:39:00 INFO SparkContext: Submitted application: Lab 2 Exercise
+23/05/04 19:39:00 INFO ResourceProfile: Default ResourceProfile created, executor resources: Map(cores -> name: cores, amount: 1, script: , vendor: , memory -> name: memory, amount: 1024, script: , vendor: , offHeap -> name: offHeap, amount: 0, script: , vendor: ), task resources: Map(cpus -> name: cpus, amount: 1.0)
+23/05/04 19:39:00 INFO ResourceProfile: Limiting resource is cpu
+23/05/04 19:39:00 INFO ResourceProfileManager: Added ResourceProfile id: 0
+23/05/04 19:39:00 INFO SecurityManager: Changing view acls to: acq21ps
+23/05/04 19:39:00 INFO SecurityManager: Changing modify acls to: acq21ps
+23/05/04 19:39:00 INFO SecurityManager: Changing view acls groups to: 
+23/05/04 19:39:00 INFO SecurityManager: Changing modify acls groups to: 
+23/05/04 19:39:00 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users  with view permissions: Set(acq21ps); groups with view permissions: Set(); users  with modify permissions: Set(acq21ps); groups with modify permissions: Set()
+23/05/04 19:39:01 INFO Utils: Successfully started service 'sparkDriver' on port 33407.
+23/05/04 19:39:01 INFO SparkEnv: Registering MapOutputTracker
+23/05/04 19:39:01 INFO SparkEnv: Registering BlockManagerMaster
+23/05/04 19:39:01 INFO BlockManagerMasterEndpoint: Using org.apache.spark.storage.DefaultTopologyMapper for getting topology information
+23/05/04 19:39:01 INFO BlockManagerMasterEndpoint: BlockManagerMasterEndpoint up
+23/05/04 19:39:01 INFO SparkEnv: Registering BlockManagerMasterHeartbeat
+23/05/04 19:39:01 INFO DiskBlockManager: Created local directory at /mnt/fastdata/acq21ps/blockmgr-40f4e98f-efe2-4f12-b0e1-48254e4632a0
+23/05/04 19:39:01 INFO MemoryStore: MemoryStore started with capacity 408.9 MiB
+23/05/04 19:39:01 INFO SparkEnv: Registering OutputCommitCoordinator
+23/05/04 19:39:02 INFO Utils: Successfully started service 'SparkUI' on port 4040.
+23/05/04 19:39:03 INFO Executor: Starting executor ID driver on host sharc-node153.shef.ac.uk
+23/05/04 19:39:03 INFO Executor: Starting executor with user classpath (userClassPathFirst = false): ''
+23/05/04 19:39:03 INFO Utils: Successfully started service 'org.apache.spark.network.netty.NettyBlockTransferService' on port 36584.
+23/05/04 19:39:03 INFO NettyBlockTransferService: Server created on sharc-node153.shef.ac.uk:36584
+23/05/04 19:39:03 INFO BlockManager: Using org.apache.spark.storage.RandomBlockReplicationPolicy for block replication policy
+23/05/04 19:39:03 INFO BlockManagerMaster: Registering BlockManager BlockManagerId(driver, sharc-node153.shef.ac.uk, 36584, None)
+23/05/04 19:39:03 INFO BlockManagerMasterEndpoint: Registering block manager sharc-node153.shef.ac.uk:36584 with 408.9 MiB RAM, BlockManagerId(driver, sharc-node153.shef.ac.uk, 36584, None)
+23/05/04 19:39:03 INFO BlockManagerMaster: Registered BlockManager BlockManagerId(driver, sharc-node153.shef.ac.uk, 36584, None)
+23/05/04 19:39:03 INFO BlockManager: Initialized BlockManager: BlockManagerId(driver, sharc-node153.shef.ac.uk, 36584, None)
+------------------ TASK A ------------------
+
+
++-----+-------+--------+----+--------+------+-------+----------+--------+-------+-------+------+----------+-------+
+|IDpol|ClaimNb|Exposure|Area|VehPower|VehAge|DrivAge|BonusMalus|VehBrand|VehGas |Density|Region|LogClaimNb|NZClaim|
++-----+-------+--------+----+--------+------+-------+----------+--------+-------+-------+------+----------+-------+
+|1.0  |1.0    |0.1     |D   |5.0     |0.0   |55.0   |50.0      |B12     |Regular|1217.0 |R82   |0.0       |1      |
+|3.0  |1.0    |0.77    |D   |5.0     |0.0   |55.0   |50.0      |B12     |Regular|1217.0 |R82   |0.0       |1      |
+|5.0  |1.0    |0.75    |B   |6.0     |2.0   |52.0   |50.0      |B12     |Diesel |54.0   |R22   |0.0       |1      |
+|10.0 |1.0    |0.09    |B   |7.0     |0.0   |46.0   |50.0      |B12     |Diesel |76.0   |R72   |0.0       |1      |
+|11.0 |1.0    |0.84    |B   |7.0     |0.0   |46.0   |50.0      |B12     |Diesel |76.0   |R72   |0.0       |1      |
+|13.0 |1.0    |0.52    |E   |6.0     |2.0   |38.0   |50.0      |B12     |Regular|3003.0 |R31   |0.0       |1      |
+|15.0 |1.0    |0.45    |E   |6.0     |2.0   |38.0   |50.0      |B12     |Regular|3003.0 |R31   |0.0       |1      |
+|17.0 |1.0    |0.27    |C   |7.0     |0.0   |33.0   |68.0      |B12     |Diesel |137.0  |R91   |0.0       |1      |
+|18.0 |1.0    |0.71    |C   |7.0     |0.0   |33.0   |68.0      |B12     |Diesel |137.0  |R91   |0.0       |1      |
+|21.0 |1.0    |0.15    |B   |7.0     |0.0   |41.0   |50.0      |B12     |Diesel |60.0   |R52   |0.0       |1      |
+|25.0 |1.0    |0.75    |B   |7.0     |0.0   |41.0   |50.0      |B12     |Diesel |60.0   |R52   |0.0       |1      |
+|27.0 |1.0    |0.87    |C   |7.0     |0.0   |56.0   |50.0      |B12     |Diesel |173.0  |R93   |0.0       |1      |
+|30.0 |1.0    |0.81    |D   |4.0     |1.0   |27.0   |90.0      |B12     |Regular|695.0  |R72   |0.0       |1      |
+|32.0 |1.0    |0.05    |D   |4.0     |0.0   |27.0   |90.0      |B12     |Regular|695.0  |R72   |0.0       |1      |
+|35.0 |1.0    |0.76    |E   |4.0     |9.0   |23.0   |100.0     |B6      |Regular|7887.0 |R31   |0.0       |1      |
+|36.0 |1.0    |0.34    |F   |9.0     |0.0   |44.0   |76.0      |B12     |Regular|27000.0|R11   |0.0       |1      |
+|38.0 |1.0    |0.1     |A   |6.0     |2.0   |32.0   |56.0      |B12     |Diesel |23.0   |R24   |0.0       |1      |
+|42.0 |1.0    |0.77    |A   |6.0     |2.0   |32.0   |56.0      |B12     |Diesel |23.0   |R24   |0.0       |1      |
+|44.0 |1.0    |0.74    |A   |6.0     |2.0   |55.0   |50.0      |B12     |Regular|37.0   |R94   |0.0       |1      |
+|45.0 |1.0    |0.1     |A   |6.0     |2.0   |55.0   |50.0      |B12     |Regular|37.0   |R94   |0.0       |1      |
++-----+-------+--------+----+--------+------+-------+----------+--------+-------+-------+------+----------+-------+
+only showing top 20 rows
+
+The number of zero and non-zero claims in the main dataset are: 
+
++-------+------+
+|NZClaim| count|
++-------+------+
+|      1| 34060|
+|      0|643953|
++-------+------+
+
+/home/acq21ps/.conda/envs/myspark/lib/python3.9/site-packages/pyspark/python/lib/pyspark.zip/pyspark/sql/pandas/conversion.py:474: FutureWarning: iteritems is deprecated and will be removed in a future version. Use .items instead.
+  for column, series in pdf.iteritems():
+/home/acq21ps/.conda/envs/myspark/lib/python3.9/site-packages/pyspark/python/lib/pyspark.zip/pyspark/sql/pandas/conversion.py:486: FutureWarning: iteritems is deprecated and will be removed in a future version. Use .items instead.
+  for column, series in pdf.iteritems():
+The number of zero and non-zero claims in the train dataset are: 
+
+23/05/04 19:43:12 WARN TaskSetManager: Stage 18 contains a task of very large size (19286 KiB). The maximum recommended task size is 1000 KiB.
++-------+------+
+|NZClaim| count|
++-------+------+
+|      0|450767|
+|      1| 23842|
++-------+------+
+
+The number of zero and non-zero claims in the test dataset are: 
+
+23/05/04 19:43:19 WARN TaskSetManager: Stage 21 contains a task of very large size (8148 KiB). The maximum recommended task size is 1000 KiB.
++-------+------+
+|NZClaim| count|
++-------+------+
+|      0|193186|
+|      1| 10218|
++-------+------+
+
+23/05/04 19:43:22 WARN TaskSetManager: Stage 24 contains a task of very large size (19286 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:43:30 WARN TaskSetManager: Stage 27 contains a task of very large size (19286 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:43:35 WARN TaskSetManager: Stage 30 contains a task of very large size (19286 KiB). The maximum recommended task size is 1000 KiB.
+/home/acq21ps/.conda/envs/myspark/lib/python3.9/site-packages/pyspark/python/lib/pyspark.zip/pyspark/sql/pandas/conversion.py:474: FutureWarning: iteritems is deprecated and will be removed in a future version. Use .items instead.
+  for column, series in pdf.iteritems():
+/home/acq21ps/.conda/envs/myspark/lib/python3.9/site-packages/pyspark/python/lib/pyspark.zip/pyspark/sql/pandas/conversion.py:486: FutureWarning: iteritems is deprecated and will be removed in a future version. Use .items instead.
+  for column, series in pdf.iteritems():
+23/05/04 19:46:20 WARN TaskSetManager: Stage 31 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:46:25 WARN TaskSetManager: Stage 34 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+ --------------- Question B Subpart b, c i Poisson Regression ------------------
+
+
+23/05/04 19:46:30 WARN TaskSetManager: Stage 37 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:46:34 WARN PythonRunner: Detected deadlock while completing task 0.0 in stage 37 (TID 65): Attempting to kill Python Worker
+23/05/04 19:46:35 WARN TaskSetManager: Stage 38 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:46:42 WARN InstanceBuilder$NativeBLAS: Failed to load implementation from:dev.ludovic.netlib.blas.JNIBLAS
+23/05/04 19:46:42 WARN InstanceBuilder$NativeBLAS: Failed to load implementation from:dev.ludovic.netlib.blas.ForeignLinkerBLAS
+23/05/04 19:46:42 WARN InstanceBuilder$NativeLAPACK: Failed to load implementation from:dev.ludovic.netlib.lapack.JNILAPACK
+23/05/04 19:46:42 WARN TaskSetManager: Stage 39 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:46:48 WARN TaskSetManager: Stage 40 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:46:54 WARN TaskSetManager: Stage 41 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:46:59 WARN TaskSetManager: Stage 42 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:47:04 WARN TaskSetManager: Stage 43 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:47:10 WARN TaskSetManager: Stage 44 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:47:15 WARN TaskSetManager: Stage 45 contains a task of very large size (1833 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:47:16 WARN TaskSetManager: Stage 46 contains a task of very large size (1833 KiB). The maximum recommended task size is 1000 KiB.
+RegParam=0.001, Validation RMSE=0.23885958055735446
+23/05/04 19:47:17 WARN TaskSetManager: Stage 47 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:47:18 WARN TaskSetManager: Stage 48 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+RegParam=0.001, Training RMSE=0.23762883552403438
+23/05/04 19:47:24 WARN TaskSetManager: Stage 49 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:47:25 WARN TaskSetManager: Stage 50 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:47:30 WARN TaskSetManager: Stage 51 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:47:36 WARN TaskSetManager: Stage 52 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:47:42 WARN TaskSetManager: Stage 53 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:47:47 WARN TaskSetManager: Stage 54 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:47:53 WARN TaskSetManager: Stage 55 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:48:00 WARN TaskSetManager: Stage 56 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:48:06 WARN TaskSetManager: Stage 57 contains a task of very large size (1833 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:48:06 WARN TaskSetManager: Stage 58 contains a task of very large size (1833 KiB). The maximum recommended task size is 1000 KiB.
+RegParam=0.01, Validation RMSE=0.23886130168373568
+23/05/04 19:48:07 WARN TaskSetManager: Stage 59 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:48:08 WARN TaskSetManager: Stage 60 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+RegParam=0.01, Training RMSE=0.23763343542763246
+23/05/04 19:48:14 WARN TaskSetManager: Stage 61 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:48:15 WARN TaskSetManager: Stage 62 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:48:20 WARN TaskSetManager: Stage 63 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:48:26 WARN TaskSetManager: Stage 64 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:48:31 WARN TaskSetManager: Stage 65 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:48:36 WARN TaskSetManager: Stage 66 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:48:42 WARN TaskSetManager: Stage 67 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:48:47 WARN TaskSetManager: Stage 68 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:48:53 WARN TaskSetManager: Stage 69 contains a task of very large size (1833 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:48:53 WARN TaskSetManager: Stage 70 contains a task of very large size (1833 KiB). The maximum recommended task size is 1000 KiB.
+RegParam=0.1, Validation RMSE=0.23890370854851484
+23/05/04 19:48:53 WARN TaskSetManager: Stage 71 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:48:54 WARN TaskSetManager: Stage 72 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+RegParam=0.1, Training RMSE=0.23770577842874288
+23/05/04 19:49:00 WARN TaskSetManager: Stage 73 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:49:01 WARN TaskSetManager: Stage 74 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:49:07 WARN TaskSetManager: Stage 75 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:49:13 WARN TaskSetManager: Stage 76 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:49:18 WARN TaskSetManager: Stage 77 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:49:24 WARN TaskSetManager: Stage 78 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:49:29 WARN TaskSetManager: Stage 79 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:49:34 WARN TaskSetManager: Stage 80 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:49:40 WARN TaskSetManager: Stage 81 contains a task of very large size (1833 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:49:40 WARN TaskSetManager: Stage 82 contains a task of very large size (1833 KiB). The maximum recommended task size is 1000 KiB.
+RegParam=1, Validation RMSE=0.2394518014505617
+23/05/04 19:49:41 WARN TaskSetManager: Stage 83 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:49:45 WARN PythonRunner: Detected deadlock while completing task 0.0 in stage 83 (TID 216): Attempting to kill Python Worker
+23/05/04 19:49:45 WARN TaskSetManager: Stage 84 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+RegParam=1, Training RMSE=0.23842369136864267
+23/05/04 19:49:51 WARN TaskSetManager: Stage 85 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:49:55 WARN PythonRunner: Detected deadlock while completing task 0.0 in stage 85 (TID 221): Attempting to kill Python Worker
+23/05/04 19:49:55 WARN TaskSetManager: Stage 86 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:50:00 WARN TaskSetManager: Stage 87 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:50:06 WARN TaskSetManager: Stage 88 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:50:12 WARN TaskSetManager: Stage 89 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:50:18 WARN TaskSetManager: Stage 90 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:50:23 WARN TaskSetManager: Stage 91 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:50:29 WARN TaskSetManager: Stage 92 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:50:34 WARN TaskSetManager: Stage 93 contains a task of very large size (1833 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:50:34 WARN TaskSetManager: Stage 94 contains a task of very large size (1833 KiB). The maximum recommended task size is 1000 KiB.
+RegParam=10, Validation RMSE=0.24018650178702242
+23/05/04 19:50:35 WARN TaskSetManager: Stage 95 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:50:39 WARN PythonRunner: Detected deadlock while completing task 0.0 in stage 95 (TID 255): Attempting to kill Python Worker
+23/05/04 19:50:39 WARN TaskSetManager: Stage 96 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+RegParam=10, Training RMSE=0.23925382483142002
+
+ Time Taken for Tuning Poisson Regression is 255.26233196258545 units
+/data/acq21ps/ScalableML/Code/trial.py:200: UserWarning: color is redundantly defined by the 'color' keyword argument and the fmt string "ro-" (-> color='r'). The keyword argument will take precedence.
+  plt.plot(regParams, rmse_values, 'ro-', label = 'Validation score', color = 'r')
+/data/acq21ps/ScalableML/Code/trial.py:201: UserWarning: color is redundantly defined by the 'color' keyword argument and the fmt string "ro-" (-> color='r'). The keyword argument will take precedence.
+  plt.plot(regParams, rmse_values1, 'ro-', label = 'Training score', color = 'b')
+23/05/04 19:50:46 WARN TaskSetManager: Stage 97 contains a task of very large size (19286 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:50:50 WARN PythonRunner: Detected deadlock while completing task 0.0 in stage 97 (TID 260): Attempting to kill Python Worker
+23/05/04 19:50:50 WARN TaskSetManager: Stage 98 contains a task of very large size (19286 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:50:56 WARN TaskSetManager: Stage 99 contains a task of very large size (19286 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:51:02 WARN TaskSetManager: Stage 100 contains a task of very large size (19286 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:51:08 WARN TaskSetManager: Stage 101 contains a task of very large size (19286 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:51:15 WARN TaskSetManager: Stage 102 contains a task of very large size (19286 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:51:21 WARN TaskSetManager: Stage 103 contains a task of very large size (19286 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:51:27 WARN TaskSetManager: Stage 104 contains a task of very large size (19286 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:51:33 WARN TaskSetManager: Stage 105 contains a task of very large size (8148 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:51:33 WARN TaskSetManager: Stage 106 contains a task of very large size (8148 KiB). The maximum recommended task size is 1000 KiB.
+Best RegParam=0.001, Test RMSE=0.2390418003001379
+Model Coefficients:  [ 0.38701707  0.01491439 -0.19203459  0.12480013  0.3132555  -0.00348586
+ -0.07325266 -0.00629926  0.03270282 -0.14531303 -0.12264507  0.10319661
+  0.0425716   0.02878878  0.04677066  0.13012925 -0.00853752  0.04046889
+  0.02121617  0.1043449   0.09284629  0.07167249  0.15050428  0.13966246
+ -0.01967536  0.02231834  0.18632445  0.04414095 -0.06461369 -0.05570251
+ -0.16648836  0.03427953 -0.14624344 -0.15598924  0.10927982  0.00673751
+ -0.17661796  0.04502608 -0.25014585  0.22924703  0.09021096  0.1071586
+ -0.01461645]
+ ------------------ Question B subpart b, c, ii L1-Regularized Linear Regression ------------------------------
+
+
+23/05/04 19:51:36 WARN TaskSetManager: Stage 107 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:51:38 WARN TaskSetManager: Stage 108 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:51:44 WARN TaskSetManager: Stage 109 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:51:50 WARN TaskSetManager: Stage 110 contains a task of very large size (1833 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:51:50 WARN TaskSetManager: Stage 111 contains a task of very large size (1833 KiB). The maximum recommended task size is 1000 KiB.
+RegParam=0.001, Validation RMSE=1.5086785983392026
+23/05/04 19:51:51 WARN TaskSetManager: Stage 112 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:51:55 WARN PythonRunner: Detected deadlock while completing task 0.0 in stage 112 (TID 308): Attempting to kill Python Worker
+23/05/04 19:51:55 WARN TaskSetManager: Stage 113 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+RegParam=0.001, Training RMSE=1.507975601832902
+23/05/04 19:52:00 WARN TaskSetManager: Stage 114 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:52:04 WARN PythonRunner: Detected deadlock while completing task 0.0 in stage 114 (TID 313): Attempting to kill Python Worker
+23/05/04 19:52:05 WARN TaskSetManager: Stage 115 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:52:10 WARN TaskSetManager: Stage 116 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:52:15 WARN TaskSetManager: Stage 117 contains a task of very large size (1833 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:52:16 WARN TaskSetManager: Stage 118 contains a task of very large size (1833 KiB). The maximum recommended task size is 1000 KiB.
+RegParam=0.01, Validation RMSE=1.5093549652783176
+23/05/04 19:52:16 WARN TaskSetManager: Stage 119 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:52:17 WARN TaskSetManager: Stage 120 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+RegParam=0.01, Training RMSE=1.5086343374144198
+23/05/04 19:52:23 WARN TaskSetManager: Stage 121 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:52:23 WARN TaskSetManager: Stage 122 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:52:29 WARN TaskSetManager: Stage 123 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:52:34 WARN TaskSetManager: Stage 124 contains a task of very large size (1833 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:52:34 WARN TaskSetManager: Stage 125 contains a task of very large size (1833 KiB). The maximum recommended task size is 1000 KiB.
+RegParam=0.1, Validation RMSE=1.5162574972542626
+23/05/04 19:52:35 WARN TaskSetManager: Stage 126 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:52:36 WARN TaskSetManager: Stage 127 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+RegParam=0.1, Training RMSE=1.5169692970061222
+23/05/04 19:52:43 WARN TaskSetManager: Stage 128 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:52:43 WARN TaskSetManager: Stage 129 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:52:49 WARN TaskSetManager: Stage 130 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:52:55 WARN TaskSetManager: Stage 131 contains a task of very large size (1833 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:52:55 WARN TaskSetManager: Stage 132 contains a task of very large size (1833 KiB). The maximum recommended task size is 1000 KiB.
+RegParam=1, Validation RMSE=1.5170664560954337
+23/05/04 19:52:56 WARN TaskSetManager: Stage 133 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:52:56 WARN TaskSetManager: Stage 134 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+RegParam=1, Training RMSE=1.5178600694296063
+23/05/04 19:53:02 WARN TaskSetManager: Stage 135 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:53:03 WARN TaskSetManager: Stage 136 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:53:09 WARN TaskSetManager: Stage 137 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:53:14 WARN TaskSetManager: Stage 138 contains a task of very large size (1833 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:53:14 WARN TaskSetManager: Stage 139 contains a task of very large size (1833 KiB). The maximum recommended task size is 1000 KiB.
+RegParam=10, Validation RMSE=1.5170664560954337
+23/05/04 19:53:15 WARN TaskSetManager: Stage 140 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:53:19 WARN PythonRunner: Detected deadlock while completing task 0.0 in stage 140 (TID 384): Attempting to kill Python Worker
+23/05/04 19:53:19 WARN TaskSetManager: Stage 141 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+RegParam=10, Training RMSE=1.5178600694296063
+
+ Time Taken for Tuning L1-Linear Regression is 108.80495047569275 units
+/data/acq21ps/ScalableML/Code/trial.py:259: UserWarning: color is redundantly defined by the 'color' keyword argument and the fmt string "ro-" (-> color='r'). The keyword argument will take precedence.
+  plt.plot(regParams, rmse_values, 'ro-', label = 'Validation score', color = 'r')
+/data/acq21ps/ScalableML/Code/trial.py:260: UserWarning: color is redundantly defined by the 'color' keyword argument and the fmt string "ro-" (-> color='r'). The keyword argument will take precedence.
+  plt.plot(regParams, rmse_values1, 'ro-', label = 'Training score', color = 'b')
+23/05/04 19:53:26 WARN TaskSetManager: Stage 142 contains a task of very large size (19286 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:53:30 WARN PythonRunner: Detected deadlock while completing task 0.0 in stage 142 (TID 389): Attempting to kill Python Worker
+23/05/04 19:53:30 WARN TaskSetManager: Stage 143 contains a task of very large size (19286 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:53:36 WARN TaskSetManager: Stage 144 contains a task of very large size (19286 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:53:42 WARN TaskSetManager: Stage 145 contains a task of very large size (8148 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:53:42 WARN TaskSetManager: Stage 146 contains a task of very large size (8148 KiB). The maximum recommended task size is 1000 KiB.
+Best RegParam=0.001, Test RMSE=1.5093809580530313
+Model Coefficients:  [ 0.13008711  0.00510234 -0.06329118  0.05022585  0.12496112  0.00197737
+  0.          0.01571731  0.02417369 -0.02336078 -0.01308193  0.00740539
+  0.         -0.00244108  0.          0.03044291 -0.0113769   0.
+  0.          0.015861    0.01246349  0.02409041  0.03982767  0.04163353
+ -0.01671419  0.          0.05921661  0.00287773 -0.03724202 -0.02380883
+ -0.05586457  0.         -0.04250653 -0.05318971  0.02785595  0.
+ -0.04469891  0.0029512  -0.07881833  0.06606447  0.          0.00787284
+  0.        ]
+ ------------------ Question B subpart b, c, ii L2-Regularized Linear Regression ------------------------------
+
+
+23/05/04 19:53:45 WARN TaskSetManager: Stage 147 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:53:49 WARN PythonRunner: Detected deadlock while completing task 0.0 in stage 147 (TID 403): Attempting to kill Python Worker
+23/05/04 19:53:49 WARN TaskSetManager: Stage 148 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:53:55 WARN TaskSetManager: Stage 149 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:54:01 WARN TaskSetManager: Stage 150 contains a task of very large size (1833 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:54:01 WARN TaskSetManager: Stage 151 contains a task of very large size (1833 KiB). The maximum recommended task size is 1000 KiB.
+RegParam=0.001, Validation RMSE=1.5086588955272013
+23/05/04 19:54:02 WARN TaskSetManager: Stage 152 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:54:02 WARN TaskSetManager: Stage 153 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+RegParam=0.001, Training RMSE=1.5079568248721138
+23/05/04 19:54:09 WARN TaskSetManager: Stage 154 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:54:09 WARN TaskSetManager: Stage 155 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:54:15 WARN TaskSetManager: Stage 156 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:54:21 WARN TaskSetManager: Stage 157 contains a task of very large size (1833 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:54:21 WARN TaskSetManager: Stage 158 contains a task of very large size (1833 KiB). The maximum recommended task size is 1000 KiB.
+RegParam=0.01, Validation RMSE=1.508656164798793
+23/05/04 19:54:21 WARN TaskSetManager: Stage 159 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:54:22 WARN TaskSetManager: Stage 160 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+RegParam=0.01, Training RMSE=1.5079591694061434
+23/05/04 19:54:28 WARN TaskSetManager: Stage 161 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:54:32 WARN PythonRunner: Detected deadlock while completing task 0.0 in stage 161 (TID 441): Attempting to kill Python Worker
+23/05/04 19:54:33 WARN TaskSetManager: Stage 162 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:54:38 WARN TaskSetManager: Stage 163 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:54:43 WARN TaskSetManager: Stage 164 contains a task of very large size (1833 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:54:44 WARN TaskSetManager: Stage 165 contains a task of very large size (1833 KiB). The maximum recommended task size is 1000 KiB.
+RegParam=0.1, Validation RMSE=1.5086112400218836
+23/05/04 19:54:45 WARN TaskSetManager: Stage 166 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:54:45 WARN TaskSetManager: Stage 167 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+RegParam=0.1, Training RMSE=1.508039136755261
+23/05/04 19:54:51 WARN TaskSetManager: Stage 168 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:54:55 WARN PythonRunner: Detected deadlock while completing task 0.0 in stage 168 (TID 460): Attempting to kill Python Worker
+23/05/04 19:54:55 WARN TaskSetManager: Stage 169 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:55:01 WARN TaskSetManager: Stage 170 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:55:06 WARN TaskSetManager: Stage 171 contains a task of very large size (1833 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:55:07 WARN TaskSetManager: Stage 172 contains a task of very large size (1833 KiB). The maximum recommended task size is 1000 KiB.
+RegParam=1, Validation RMSE=1.5101756171020617
+23/05/04 19:55:07 WARN TaskSetManager: Stage 173 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:55:08 WARN TaskSetManager: Stage 174 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+RegParam=1, Training RMSE=1.5102549699143613
+23/05/04 19:55:14 WARN TaskSetManager: Stage 175 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:55:14 WARN TaskSetManager: Stage 176 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:55:22 WARN TaskSetManager: Stage 177 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:55:27 WARN TaskSetManager: Stage 178 contains a task of very large size (1833 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:55:28 WARN TaskSetManager: Stage 179 contains a task of very large size (1833 KiB). The maximum recommended task size is 1000 KiB.
+RegParam=10, Validation RMSE=1.5152460439115758
+23/05/04 19:55:28 WARN TaskSetManager: Stage 180 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:55:29 WARN TaskSetManager: Stage 181 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+RegParam=10, Training RMSE=1.5159235466960657
+
+ Time Taken for Tuning L2-Linear Regression is 109.9115481376648 units
+/data/acq21ps/ScalableML/Code/trial.py:311: UserWarning: color is redundantly defined by the 'color' keyword argument and the fmt string "ro-" (-> color='r'). The keyword argument will take precedence.
+  plt.plot(regParams, rmse_values, 'ro-', label = 'Validation score', color = 'r')
+/data/acq21ps/ScalableML/Code/trial.py:312: UserWarning: color is redundantly defined by the 'color' keyword argument and the fmt string "ro-" (-> color='r'). The keyword argument will take precedence.
+  plt.plot(regParams, rmse_values1, 'ro-', label = 'Training score', color = 'b')
+23/05/04 19:55:35 WARN TaskSetManager: Stage 182 contains a task of very large size (19286 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:55:39 WARN PythonRunner: Detected deadlock while completing task 0.0 in stage 182 (TID 498): Attempting to kill Python Worker
+23/05/04 19:55:39 WARN TaskSetManager: Stage 183 contains a task of very large size (19286 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:55:45 WARN TaskSetManager: Stage 184 contains a task of very large size (19286 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:55:51 WARN TaskSetManager: Stage 185 contains a task of very large size (8148 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:55:52 WARN TaskSetManager: Stage 186 contains a task of very large size (8148 KiB). The maximum recommended task size is 1000 KiB.
+Best RegParam=0.1, Test RMSE=1.5094341760957641
+Model Coefficients:  [ 1.21167554e-01  4.49931969e-03 -5.80702970e-02  4.46699945e-02
+  1.13519346e-01  2.77167005e-03 -6.42211196e-03  1.23130321e-02
+  2.09657923e-02 -3.05135549e-02 -2.11003183e-02  1.25676660e-02
+ -1.32031346e-05 -2.05173892e-03  4.48558430e-03  3.45825154e-02
+ -1.34628883e-02  4.26325004e-03 -2.59763023e-03  2.15653336e-02
+  1.94157723e-02  2.47579781e-02  3.68035342e-02  3.61849286e-02
+ -2.57317845e-02 -9.21626364e-03  5.65118484e-02  9.93041864e-04
+ -4.60018936e-02 -3.35098150e-02 -6.47681960e-02 -2.22329023e-03
+ -5.35928729e-02 -6.12370429e-02  3.04944954e-02 -1.05010639e-02
+ -5.95267339e-02  5.96549211e-03 -9.09664139e-02  6.70488556e-02
+ -1.11528549e-03  1.41940415e-02 -1.46640747e-02]
+ ------------------ Question B subpart b, c, iii L1-Regularized Logistic Regression ------------------------------
+
+
+23/05/04 19:55:54 WARN TaskSetManager: Stage 187 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:55:55 WARN TaskSetManager: Stage 188 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:56:02 WARN TaskSetManager: Stage 189 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:56:08 WARN TaskSetManager: Stage 190 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:56:09 WARN TaskSetManager: Stage 191 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:56:09 WARN TaskSetManager: Stage 192 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:56:10 WARN TaskSetManager: Stage 193 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:56:10 WARN TaskSetManager: Stage 194 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:56:11 WARN TaskSetManager: Stage 195 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:56:12 WARN TaskSetManager: Stage 196 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:56:13 WARN TaskSetManager: Stage 197 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:56:14 WARN TaskSetManager: Stage 198 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:56:15 WARN TaskSetManager: Stage 199 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:56:16 WARN TaskSetManager: Stage 200 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:56:17 WARN TaskSetManager: Stage 201 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:56:18 WARN TaskSetManager: Stage 202 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:56:19 WARN TaskSetManager: Stage 203 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:56:20 WARN TaskSetManager: Stage 204 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:56:21 WARN TaskSetManager: Stage 205 contains a task of very large size (1833 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:56:22 WARN TaskSetManager: Stage 206 contains a task of very large size (1833 KiB). The maximum recommended task size is 1000 KiB.
+RegParam=0.001, Validation Accuracy=0.9497692842544405
+23/05/04 19:56:23 WARN TaskSetManager: Stage 208 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:56:24 WARN TaskSetManager: Stage 209 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+RegParam=0.001, Training Accuracy=0.9497621433320536
+23/05/04 19:56:32 WARN TaskSetManager: Stage 211 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:56:33 WARN TaskSetManager: Stage 212 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:56:39 WARN TaskSetManager: Stage 213 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:56:46 WARN TaskSetManager: Stage 214 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:56:46 WARN TaskSetManager: Stage 215 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:56:49 WARN TaskSetManager: Stage 216 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:56:50 WARN TaskSetManager: Stage 217 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:56:51 WARN TaskSetManager: Stage 218 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:56:51 WARN TaskSetManager: Stage 219 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:56:52 WARN TaskSetManager: Stage 220 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:56:53 WARN TaskSetManager: Stage 221 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:56:54 WARN TaskSetManager: Stage 222 contains a task of very large size (1833 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:56:54 WARN TaskSetManager: Stage 223 contains a task of very large size (1833 KiB). The maximum recommended task size is 1000 KiB.
+RegParam=0.01, Validation Accuracy=0.9497692842544405
+23/05/04 19:56:56 WARN TaskSetManager: Stage 225 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:56:57 WARN TaskSetManager: Stage 226 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+RegParam=0.01, Training Accuracy=0.94976448444099
+23/05/04 19:57:04 WARN TaskSetManager: Stage 228 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:57:08 WARN PythonRunner: Detected deadlock while completing task 0.0 in stage 228 (TID 658): Attempting to kill Python Worker
+23/05/04 19:57:08 WARN TaskSetManager: Stage 229 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:57:14 WARN TaskSetManager: Stage 230 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:57:20 WARN TaskSetManager: Stage 231 contains a task of very large size (1833 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:57:21 WARN TaskSetManager: Stage 232 contains a task of very large size (1833 KiB). The maximum recommended task size is 1000 KiB.
+RegParam=0.1, Validation Accuracy=0.9497692842544405
+23/05/04 19:57:21 WARN TaskSetManager: Stage 234 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:57:22 WARN TaskSetManager: Stage 235 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+RegParam=0.1, Training Accuracy=0.94976448444099
+23/05/04 19:57:29 WARN TaskSetManager: Stage 237 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:57:29 WARN TaskSetManager: Stage 238 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:57:35 WARN TaskSetManager: Stage 239 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:57:41 WARN TaskSetManager: Stage 240 contains a task of very large size (1833 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:57:41 WARN TaskSetManager: Stage 241 contains a task of very large size (1833 KiB). The maximum recommended task size is 1000 KiB.
+RegParam=1, Validation Accuracy=0.9497692842544405
+23/05/04 19:57:42 WARN TaskSetManager: Stage 243 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:57:43 WARN TaskSetManager: Stage 244 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+RegParam=1, Training Accuracy=0.94976448444099
+23/05/04 19:57:49 WARN TaskSetManager: Stage 246 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:57:50 WARN TaskSetManager: Stage 247 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:57:56 WARN TaskSetManager: Stage 248 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:58:03 WARN TaskSetManager: Stage 249 contains a task of very large size (1833 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:58:03 WARN TaskSetManager: Stage 250 contains a task of very large size (1833 KiB). The maximum recommended task size is 1000 KiB.
+RegParam=10, Validation Accuracy=0.9497692842544405
+23/05/04 19:58:04 WARN TaskSetManager: Stage 252 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:58:08 WARN PythonRunner: Detected deadlock while completing task 0.0 in stage 252 (TID 730): Attempting to kill Python Worker
+23/05/04 19:58:08 WARN TaskSetManager: Stage 253 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+RegParam=10, Training Accuracy=0.94976448444099
+
+ Time Taken for Tuning L1-Logistic Regression is 140.53174877166748 units
+/data/acq21ps/ScalableML/Code/trial.py:372: UserWarning: color is redundantly defined by the 'color' keyword argument and the fmt string "ro-" (-> color='r'). The keyword argument will take precedence.
+  ax.plot(regParams, accuracy_values, 'ro-', label = 'Validation accuracy', color = 'r')
+/data/acq21ps/ScalableML/Code/trial.py:373: UserWarning: color is redundantly defined by the 'color' keyword argument and the fmt string "ro-" (-> color='r'). The keyword argument will take precedence.
+  ax.plot(regParams, accuracy_values1, 'ro-', label = 'Training accuracy', color = 'b')
+23/05/04 19:58:15 WARN TaskSetManager: Stage 255 contains a task of very large size (19286 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:58:19 WARN PythonRunner: Detected deadlock while completing task 0.0 in stage 255 (TID 739): Attempting to kill Python Worker
+23/05/04 19:58:19 WARN TaskSetManager: Stage 256 contains a task of very large size (19286 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:58:26 WARN TaskSetManager: Stage 257 contains a task of very large size (19286 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:58:33 WARN TaskSetManager: Stage 258 contains a task of very large size (19286 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:58:33 WARN TaskSetManager: Stage 259 contains a task of very large size (19286 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:58:34 WARN TaskSetManager: Stage 260 contains a task of very large size (19286 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:58:35 WARN TaskSetManager: Stage 261 contains a task of very large size (19286 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:58:35 WARN TaskSetManager: Stage 262 contains a task of very large size (19286 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:58:36 WARN TaskSetManager: Stage 263 contains a task of very large size (19286 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:58:37 WARN TaskSetManager: Stage 264 contains a task of very large size (19286 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:58:40 WARN TaskSetManager: Stage 265 contains a task of very large size (19286 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:58:41 WARN TaskSetManager: Stage 266 contains a task of very large size (19286 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:58:41 WARN TaskSetManager: Stage 267 contains a task of very large size (19286 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:58:42 WARN TaskSetManager: Stage 268 contains a task of very large size (19286 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:58:43 WARN TaskSetManager: Stage 269 contains a task of very large size (19286 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:58:44 WARN TaskSetManager: Stage 270 contains a task of very large size (19286 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:58:45 WARN TaskSetManager: Stage 271 contains a task of very large size (19286 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:58:46 WARN TaskSetManager: Stage 272 contains a task of very large size (19286 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:58:47 WARN TaskSetManager: Stage 273 contains a task of very large size (19286 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:58:48 WARN TaskSetManager: Stage 274 contains a task of very large size (8148 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:58:49 WARN TaskSetManager: Stage 275 contains a task of very large size (8148 KiB). The maximum recommended task size is 1000 KiB.
+Best RegParam=0.001, Test Accuracy=0.9497649997050206
+Model Coefficients:  [ 0.3900581  -0.1768016   0.10463665  0.30332293  0.00089787  0.02360026
+ -0.02139297  0.04698036  0.05164158  0.08462579  0.084625   -0.04888759
+ -0.08087223 -0.02437468 -0.00514969 -0.00326792 -0.04908563]
+ ------------------ Question B subpart b, c, iii L2-Regularized Logistic Regression ------------------------------
+
+
+23/05/04 19:58:53 WARN TaskSetManager: Stage 277 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:58:53 WARN TaskSetManager: Stage 278 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:59:00 WARN TaskSetManager: Stage 279 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:59:07 WARN TaskSetManager: Stage 280 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:59:07 WARN TaskSetManager: Stage 281 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:59:08 WARN TaskSetManager: Stage 282 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:59:09 WARN TaskSetManager: Stage 283 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:59:10 WARN TaskSetManager: Stage 284 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:59:11 WARN TaskSetManager: Stage 285 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:59:12 WARN TaskSetManager: Stage 286 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:59:13 WARN TaskSetManager: Stage 287 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:59:14 WARN TaskSetManager: Stage 288 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:59:15 WARN TaskSetManager: Stage 289 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:59:16 WARN TaskSetManager: Stage 290 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:59:17 WARN TaskSetManager: Stage 291 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:59:19 WARN TaskSetManager: Stage 292 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:59:20 WARN TaskSetManager: Stage 293 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:59:21 WARN TaskSetManager: Stage 294 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:59:22 WARN TaskSetManager: Stage 295 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:59:23 WARN TaskSetManager: Stage 296 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:59:23 WARN TaskSetManager: Stage 297 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:59:24 WARN TaskSetManager: Stage 298 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:59:25 WARN TaskSetManager: Stage 299 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:59:26 WARN TaskSetManager: Stage 300 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:59:27 WARN TaskSetManager: Stage 301 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:59:28 WARN TaskSetManager: Stage 302 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:59:29 WARN TaskSetManager: Stage 303 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:59:29 WARN TaskSetManager: Stage 304 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:59:31 WARN TaskSetManager: Stage 305 contains a task of very large size (1833 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:59:31 WARN TaskSetManager: Stage 306 contains a task of very large size (1833 KiB). The maximum recommended task size is 1000 KiB.
+RegParam=0.001, Validation Accuracy=0.9497692842544405
+23/05/04 19:59:32 WARN TaskSetManager: Stage 308 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:59:33 WARN TaskSetManager: Stage 309 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+RegParam=0.001, Training Accuracy=0.949769166658863
+23/05/04 19:59:40 WARN TaskSetManager: Stage 311 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:59:40 WARN TaskSetManager: Stage 312 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:59:46 WARN TaskSetManager: Stage 313 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:59:52 WARN TaskSetManager: Stage 314 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:59:53 WARN TaskSetManager: Stage 315 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:59:54 WARN TaskSetManager: Stage 316 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:59:54 WARN TaskSetManager: Stage 317 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:59:55 WARN TaskSetManager: Stage 318 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:59:57 WARN TaskSetManager: Stage 319 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:59:57 WARN TaskSetManager: Stage 320 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:59:58 WARN TaskSetManager: Stage 321 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 19:59:59 WARN TaskSetManager: Stage 322 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 20:00:01 WARN TaskSetManager: Stage 323 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 20:00:01 WARN TaskSetManager: Stage 324 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 20:00:02 WARN TaskSetManager: Stage 325 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 20:00:03 WARN TaskSetManager: Stage 326 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 20:00:04 WARN TaskSetManager: Stage 327 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 20:00:05 WARN TaskSetManager: Stage 328 contains a task of very large size (1833 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 20:00:05 WARN TaskSetManager: Stage 329 contains a task of very large size (1833 KiB). The maximum recommended task size is 1000 KiB.
+RegParam=0.01, Validation Accuracy=0.9497692842544405
+23/05/04 20:00:06 WARN TaskSetManager: Stage 331 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 20:00:07 WARN TaskSetManager: Stage 332 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+RegParam=0.01, Training Accuracy=0.9497621433320536
+23/05/04 20:00:14 WARN TaskSetManager: Stage 334 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 20:00:18 WARN PythonRunner: Detected deadlock while completing task 0.0 in stage 334 (TID 1031): Attempting to kill Python Worker
+23/05/04 20:00:18 WARN TaskSetManager: Stage 335 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 20:00:24 WARN TaskSetManager: Stage 336 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 20:00:30 WARN TaskSetManager: Stage 337 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 20:00:30 WARN TaskSetManager: Stage 338 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 20:00:32 WARN TaskSetManager: Stage 339 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 20:00:33 WARN TaskSetManager: Stage 340 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 20:00:34 WARN TaskSetManager: Stage 341 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 20:00:34 WARN TaskSetManager: Stage 342 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 20:00:35 WARN TaskSetManager: Stage 343 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 20:00:36 WARN TaskSetManager: Stage 344 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 20:00:37 WARN TaskSetManager: Stage 345 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 20:00:38 WARN TaskSetManager: Stage 346 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 20:00:39 WARN TaskSetManager: Stage 347 contains a task of very large size (1833 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 20:00:39 WARN TaskSetManager: Stage 348 contains a task of very large size (1833 KiB). The maximum recommended task size is 1000 KiB.
+RegParam=0.1, Validation Accuracy=0.9497692842544405
+23/05/04 20:00:40 WARN TaskSetManager: Stage 350 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 20:00:41 WARN TaskSetManager: Stage 351 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+RegParam=0.1, Training Accuracy=0.94976448444099
+23/05/04 20:00:48 WARN TaskSetManager: Stage 353 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 20:00:52 WARN PythonRunner: Detected deadlock while completing task 0.0 in stage 353 (TID 1098): Attempting to kill Python Worker
+23/05/04 20:00:52 WARN TaskSetManager: Stage 354 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 20:00:58 WARN TaskSetManager: Stage 355 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 20:01:04 WARN TaskSetManager: Stage 356 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 20:01:05 WARN TaskSetManager: Stage 357 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 20:01:05 WARN TaskSetManager: Stage 358 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 20:01:06 WARN TaskSetManager: Stage 359 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 20:01:07 WARN TaskSetManager: Stage 360 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 20:01:09 WARN TaskSetManager: Stage 361 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 20:01:09 WARN TaskSetManager: Stage 362 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 20:01:10 WARN TaskSetManager: Stage 363 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 20:01:11 WARN TaskSetManager: Stage 364 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 20:01:12 WARN TaskSetManager: Stage 365 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 20:01:13 WARN TaskSetManager: Stage 366 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 20:01:14 WARN TaskSetManager: Stage 367 contains a task of very large size (1833 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 20:01:14 WARN TaskSetManager: Stage 368 contains a task of very large size (1833 KiB). The maximum recommended task size is 1000 KiB.
+RegParam=1, Validation Accuracy=0.9497692842544405
+23/05/04 20:01:16 WARN TaskSetManager: Stage 370 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 20:01:17 WARN TaskSetManager: Stage 371 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+RegParam=1, Training Accuracy=0.94976448444099
+23/05/04 20:01:23 WARN TaskSetManager: Stage 373 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 20:01:24 WARN TaskSetManager: Stage 374 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 20:01:30 WARN TaskSetManager: Stage 375 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 20:01:37 WARN TaskSetManager: Stage 376 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 20:01:37 WARN TaskSetManager: Stage 377 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 20:01:38 WARN TaskSetManager: Stage 378 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 20:01:39 WARN TaskSetManager: Stage 379 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 20:01:39 WARN TaskSetManager: Stage 380 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 20:01:40 WARN TaskSetManager: Stage 381 contains a task of very large size (1833 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 20:01:41 WARN TaskSetManager: Stage 382 contains a task of very large size (1833 KiB). The maximum recommended task size is 1000 KiB.
+RegParam=10, Validation Accuracy=0.9497692842544405
+23/05/04 20:01:42 WARN TaskSetManager: Stage 384 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 20:01:42 WARN TaskSetManager: Stage 385 contains a task of very large size (17291 KiB). The maximum recommended task size is 1000 KiB.
+RegParam=10, Training Accuracy=0.94976448444099
+
+ Time Taken for Tuning L2-Logistic Regression is 177.015123128891 units
+/data/acq21ps/ScalableML/Code/trial.py:429: UserWarning: color is redundantly defined by the 'color' keyword argument and the fmt string "ro-" (-> color='r'). The keyword argument will take precedence.
+  ax.plot(regParams, accuracy_values, 'ro-', label = 'Validation accuracy', color = 'r')
+/data/acq21ps/ScalableML/Code/trial.py:430: UserWarning: color is redundantly defined by the 'color' keyword argument and the fmt string "ro-" (-> color='r'). The keyword argument will take precedence.
+  ax.plot(regParams, accuracy_values1, 'ro-', label = 'Training accuracy', color = 'b')
+23/05/04 20:01:50 WARN TaskSetManager: Stage 387 contains a task of very large size (19286 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 20:01:54 WARN PythonRunner: Detected deadlock while completing task 0.0 in stage 387 (TID 1216): Attempting to kill Python Worker
+23/05/04 20:01:54 WARN TaskSetManager: Stage 388 contains a task of very large size (19286 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 20:02:01 WARN TaskSetManager: Stage 389 contains a task of very large size (19286 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 20:02:08 WARN TaskSetManager: Stage 390 contains a task of very large size (19286 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 20:02:08 WARN TaskSetManager: Stage 391 contains a task of very large size (19286 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 20:02:10 WARN TaskSetManager: Stage 392 contains a task of very large size (19286 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 20:02:11 WARN TaskSetManager: Stage 393 contains a task of very large size (19286 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 20:02:12 WARN TaskSetManager: Stage 394 contains a task of very large size (19286 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 20:02:13 WARN TaskSetManager: Stage 395 contains a task of very large size (19286 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 20:02:14 WARN TaskSetManager: Stage 396 contains a task of very large size (19286 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 20:02:15 WARN TaskSetManager: Stage 397 contains a task of very large size (19286 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 20:02:16 WARN TaskSetManager: Stage 398 contains a task of very large size (19286 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 20:02:17 WARN TaskSetManager: Stage 399 contains a task of very large size (19286 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 20:02:18 WARN TaskSetManager: Stage 400 contains a task of very large size (19286 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 20:02:19 WARN TaskSetManager: Stage 401 contains a task of very large size (19286 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 20:02:20 WARN TaskSetManager: Stage 402 contains a task of very large size (19286 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 20:02:21 WARN TaskSetManager: Stage 403 contains a task of very large size (19286 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 20:02:22 WARN TaskSetManager: Stage 404 contains a task of very large size (19286 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 20:02:23 WARN TaskSetManager: Stage 405 contains a task of very large size (19286 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 20:02:24 WARN TaskSetManager: Stage 406 contains a task of very large size (19286 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 20:02:26 WARN TaskSetManager: Stage 407 contains a task of very large size (19286 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 20:02:27 WARN TaskSetManager: Stage 408 contains a task of very large size (19286 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 20:02:28 WARN TaskSetManager: Stage 409 contains a task of very large size (19286 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 20:02:29 WARN TaskSetManager: Stage 410 contains a task of very large size (19286 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 20:02:29 WARN TaskSetManager: Stage 411 contains a task of very large size (19286 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 20:02:30 WARN TaskSetManager: Stage 412 contains a task of very large size (19286 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 20:02:32 WARN TaskSetManager: Stage 413 contains a task of very large size (19286 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 20:02:33 WARN TaskSetManager: Stage 414 contains a task of very large size (8148 KiB). The maximum recommended task size is 1000 KiB.
+23/05/04 20:02:33 WARN TaskSetManager: Stage 415 contains a task of very large size (8148 KiB). The maximum recommended task size is 1000 KiB.
+Best RegParam=0.001, Test Accuracy=0.9497699160291833
+Model Coefficients:  [ 0.40364675  0.01667565 -0.20247344  0.12844191  0.32575692  0.00243912
+ -0.04081067  0.02308463  0.05416004 -0.11841121 -0.08787258  0.07970407
+  0.02336839  0.01636891  0.04008658  0.12807846 -0.01948892  0.03899995
+  0.01308451  0.09548839  0.08706548  0.07831692  0.13498307  0.11968565
+ -0.07135207 -0.01816844  0.17310007  0.01551729 -0.15500662 -0.10561687
+ -0.22182609  0.01166023 -0.18807606 -0.18157467  0.10486061 -0.02089646
+ -0.23615242  0.03548388 -0.34295939  0.22620119  0.01430721  0.06548458
+ -0.04158941]
